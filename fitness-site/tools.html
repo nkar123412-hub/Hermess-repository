@@ -1,0 +1,174 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инструменты | CYBER FIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="antialiased">
+    <div class="blob" style="top: -10%; left: 40%;"></div>
+    
+    <nav class="fixed top-0 w-full z-50 px-6 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-6 py-3">
+            <div class="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
+                <i data-lucide="zap" class="neon-text"></i>
+                <span>CYBER<span class="neon-text">FIT</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="hover:text-neon-green transition-colors">Главная</a>
+                <a href="programs.html" class="hover:text-neon-green transition-colors">Программы</a>
+                <a href="tools.html" class="text-neon-green">Калькуляторы</a>
+                <a href="dashboard.html" class="hover:text-neon-green transition-colors">Прогресс</a>
+            </div>
+            <a href="dashboard.html" class="neon-btn px-5 py-2 rounded-full text-xs uppercase">Войти</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto text-center mb-16" data-aos="fade-down">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">ЦЕНТР <span class="neon-text">АНАЛИТИКИ</span></h1>
+            <p class="text-gray-400 max-w-2xl mx-auto">Точные расчеты для твоего тела на основе научных формул</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <!-- BMI Calculator -->
+            <div class="glass-card p-8" data-aos="fade-right">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-12 bg-neon-green/20 rounded-xl flex items-center justify-center">
+                        <i data-lucide="scale" class="neon-text"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">Индекс Массы Тела (ИМТ)</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Вес (кг)</label>
+                            <input type="number" id="bmi-weight" placeholder="75" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Рост (см)</label>
+                            <input type="number" id="bmi-height" placeholder="180" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                        </div>
+                    </div>
+                    <button onclick="calculateBMI()" class="w-full neon-btn py-4 rounded-xl uppercase font-bold">Рассчитать ИМТ</button>
+                    
+                    <div id="bmi-result" class="hidden p-6 rounded-2xl bg-white/5 border border-white/10 text-center animate-pulse">
+                        <p class="text-sm text-gray-400 mb-2 uppercase">Ваш результат</p>
+                        <div id="bmi-value" class="text-4xl font-extrabold neon-text mb-2">24.5</div>
+                        <div id="bmi-status" class="text-lg font-medium">Нормальный вес</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TDEE Calculator -->
+            <div class="glass-card p-8" data-aos="fade-left">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-12 h-12 bg-neon-green/20 rounded-xl flex items-center justify-center">
+                        <i data-lucide="flame" class="neon-text"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold">Норма Калорий (TDEE)</h2>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Пол</label>
+                            <select id="tdee-gender" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                                <option value="male" class="bg-gray-900">Мужчина</option>
+                                <option value="female" class="bg-gray-900">Женщина</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Возраст</label>
+                            <input type="number" id="tdee-age" placeholder="25" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Вес (кг)</label>
+                            <input type="number" id="tdee-weight" placeholder="80" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Рост (см)</label>
+                            <input type="number" id="tdee-height" placeholder="180" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase text-gray-500 mb-2 ml-1">Активность</label>
+                        <select id="tdee-activity" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-neon-green transition-all text-white">
+                            <option value="1.2" class="bg-gray-900">Сидячий образ жизни</option>
+                            <option value="1.375" class="bg-gray-900">Легкая активность (1-3 дня)</option>
+                            <option value="1.55" class="bg-gray-900">Средняя активность (3-5 дней)</option>
+                            <option value="1.725" class="bg-gray-900">Высокая активность (6-7 дней)</option>
+                            <option value="1.9" class="bg-gray-900">Экстремальная активность</option>
+                        </select>
+                    </div>
+                    <button onclick="calculateTDEE()" class="w-full neon-btn py-4 rounded-xl uppercase font-bold">Рассчитать калории</button>
+                    
+                    <div id="tdee-result" class="hidden p-6 rounded-2xl bg-white/5 border border-white/10 text-center animate-pulse">
+                        <p class="text-sm text-gray-400 mb-2 uppercase">Ваша норма для поддержания</p>
+                        <div id="tdee-value" class="text-4xl font-extrabold neon-text mb-2">2400</div>
+                        <div class="text-lg font-medium">ккал / день</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lucide.createIcons();
+
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('bmi-weight').value);
+            const height = parseFloat(document.getElementById('bmi-height').value) / 100;
+            if (!weight || !height) return alert('Заполните все поля');
+            
+            const bmi = (weight / (height * height)).toFixed(1);
+            const resultDiv = document.getElementById('bmi-result');
+            const valueDiv = document.getElementById('bmi-value');
+            const statusDiv = document.getElementById('bmi-status');
+            
+            resultDiv.classList.remove('hidden');
+            valueDiv.innerText = bmi;
+            
+            if (bmi < 18.5) statusDiv.innerText = 'Недостаточный вес';
+            else if (bmi < 25) statusDiv.innerText = 'Нормальный вес';
+            else if (bmi < 30) statusDiv.innerText = 'Избыточный вес';
+            else statusDiv.innerText = 'Ожирение';
+        }
+
+        function calculateTDEE() {
+            const gender = document.getElementById('tdee-gender').value;
+            const age = parseInt(document.getElementById('tdee-age').value);
+            const weight = parseFloat(document.getElementById('tdee-weight').value);
+            const height = parseFloat(document.getElementById('tdee-height').value);
+            const activity = parseFloat(document.getElementById('tdee-activity').value);
+            
+            if (!age || !weight || !height) return alert('Заполните все поля');
+            
+            let bmr;
+            if (gender === 'male') {
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+            } else {
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+            }
+            
+            const tdee = Math.round(bmr * activity);
+            const resultDiv = document.getElementById('tdee-result');
+            const valueDiv = document.getElementById('tdee-value');
+            
+            resultDiv.classList.remove('hidden');
+            valueDiv.innerText = tdee;
+        }
+    </script>
+</body>
+</html>

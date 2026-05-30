@@ -1,0 +1,64 @@
+
+/* Custom Cyber-Fitness Styles */
+:root {
+    --neon-green: #ccff00;
+    --dark-bg: #0a0a0a;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--dark-bg);
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+    border-color: var(--neon-green);
+    box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.neon-text {
+    color: var(--neon-green);
+    text-shadow: 0 0 10px rgba(204, 255, 0, 0.5);
+}
+
+.neon-btn {
+    background-color: var(--neon-green);
+    color: black;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(204, 255, 0, 0.4);
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 25px rgba(204, 255, 0, 0.7);
+    transform: scale(1.05);
+}
+
+/* Background Blobs */
+.blob {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(204, 255, 0, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: move 20s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(-10%, -10%); }
+    to { transform: translate(20%, 20%); }
+}

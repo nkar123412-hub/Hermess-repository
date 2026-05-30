@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Прогресс | CYBER FIT</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="antialiased">
+    <div class="blob" style="bottom: 10%; left: -5%;"></div>
+    
+    <nav class="fixed top-0 w-full z-50 px-6 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto flex justify-between items-center glass-card px-6 py-3">
+            <div class="text-2xl font-extrabold tracking-tighter flex items-center gap-2">
+                <i data-lucide="zap" class="neon-text"></i>
+                <span>CYBER<span class="neon-text">FIT</span></span>
+            </div>
+            <div class="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest">
+                <a href="index.html" class="hover:text-neon-green transition-colors">Главная</a>
+                <a href="programs.html" class="hover:text-neon-green transition-colors">Программы</a>
+                <a href="tools.html" class="hover:text-neon-green transition-colors">Калькуляторы</a>
+                <a href="dashboard.html" class="text-neon-green">Прогресс</a>
+            </div>
+            <a href="index.html" class="neon-btn px-5 py-2 rounded-full text-xs uppercase">Выйти</a>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <!-- User Header -->
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-12" data-aos="fade-down">
+                <div class="flex items-center gap-6">
+                    <div class="w-20 h-20 rounded-full border-4 border-neon-green p-1">
+                        <img src="https://i.pravatar.cc/150?u=artur" class="w-full h-full rounded-full object-cover">
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-extrabold tracking-tight">Артюр <span class="text-gray-500 font-light">| Атлет</span></h1>
+                        <p class="text-gray-400">Текущая программа: <span class="neon-text">Гипертрофия Lvl 4</span></p>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="glass-card px-6 py-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase">Вес</p>
+                        <p class="text-xl font-bold">82.4 <span class="text-sm font-normal text-gray-400">кг</span></p>
+                    </div>
+                    <div class="glass-card px-6 py-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase">ИМТ</p>
+                        <p class="text-xl font-bold neon-text">23.1</p>
+                    </div>
+                    <div class="glass-card px-6 py-3 text-center">
+                        <p class="text-xs text-gray-500 uppercase">Жир</p>
+                        <p class="text-xl font-bold">12%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 glass-card p-8" data-aos="fade-up">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 class="text-xl font-bold">Динамика веса</h2>
+                        <select class="bg-white/5 border border-white/10 rounded-lg px-3 py-1 text-xs outline-none">
+                            <option>Последние 30 дней</option>
+                            <option>За всё время</option>
+                        </select>
+                    </div>
+                    <div class="h-80">
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8" data-aos="fade-up" data-aos-delay="100">
+                    <h2 class="text-xl font-bold mb-8">Активность</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-400">Силовые</span>
+                                <span class="neon-text">85%</span>
+                            </div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                                <div class="bg-neon-green h-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-400">Кардио</span>
+                                <span class="neon-text">40%</span>
+                            </div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                                <div class="bg-neon-green h-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="text-gray-400">Сон</span>
+                                <span class="neon-text">92%</span>
+                            </div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden"> idea: add a custom marker for sleep if we have time</div>
+                            <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+                                <div class="bg-neon-green h-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12 p-6 rounded-2xl bg-neon-green/10 border border-neon-green/20 text-center">
+                        <p class="text-sm text-gray-400 mb-2">Следующая тренировка</p>
+                        <p class="text-lg font-bold">Завтра, 08:00</p>
+                        <p class="text-xs text-gray-500 uppercase mt-1">День ног и плеч</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lucide.createIcons();
+
+        const ctx = document.getElementById('weightChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1 окт', '5 окт', '10 окт', '15 окт', '20 окт', '25 окт', '30 окт'],
+                datasets: [{
+                    label: 'Вес (кг)',
+                    data: [85, 84.2, 83.8, 83.1, 82.8, 82.5, 82.4],
+                    borderColor: '#ccff00',
+                    backgroundColor: 'rgba(204, 255, 0, 0.1)',
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#ccff00'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { 
+                        grid: { color: 'rgba(255,255,255,0.05)' },
+                        ticks: { color: '#666' }
+                    },
+                    x: { 
+                        grid: { display: false },
+                        ticks: { color: '#666' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
